@@ -20,6 +20,7 @@
 		7F82B1EE222DA39D009567E0 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F82B1ED222DA39D009567E0 /* NotificationConstants.swift */; };
 		7F82B1F0222DA579009567E0 /* MovieWithDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F82B1EF222DA579009567E0 /* MovieWithDetails.swift */; };
 		7F82B1F4222DC121009567E0 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F82B1F2222DC121009567E0 /* MoviesViewController.swift */; };
+		7FE960D8222EE8700017CA98 /* MovieWithDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE960D7222EE8700017CA98 /* MovieWithDetailsViewController.swift */; };
 		827226A41AAD58129C687400 /* Pods_MoviesSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 370885CCA0219382E9A2150D /* Pods_MoviesSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		7F82B1ED222DA39D009567E0 /* NotificationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
 		7F82B1EF222DA579009567E0 /* MovieWithDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieWithDetails.swift; sourceTree = "<group>"; };
 		7F82B1F2222DC121009567E0 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		7FE960D7222EE8700017CA98 /* MovieWithDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieWithDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AE075984AD44F664E00F4 /* Pods-MoviesSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoviesSwift/Pods-MoviesSwift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				7F82B1CB222D72A3009567E0 /* AppDelegate.swift */,
-				7F82B1CD222D72A3009567E0 /* ViewController.swift */,
 				7F82B1CF222D72A3009567E0 /* Main.storyboard */,
 				7F82B1D5222D72A4009567E0 /* Assets.xcassets */,
 				7F82B1D7222D72A4009567E0 /* LaunchScreen.storyboard */,
@@ -131,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				7F82B1F2222DC121009567E0 /* MoviesViewController.swift */,
+				7F82B1CD222D72A3009567E0 /* ViewController.swift */,
+				7FE960D7222EE8700017CA98 /* MovieWithDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			files = (
 				7F82B1CE222D72A3009567E0 /* ViewController.swift in Sources */,
 				7F82B1CC222D72A3009567E0 /* AppDelegate.swift in Sources */,
+				7FE960D8222EE8700017CA98 /* MovieWithDetailsViewController.swift in Sources */,
 				7F82B1E8222D90EF009567E0 /* MoviesTableViewCell.swift in Sources */,
 				7F82B1F0222DA579009567E0 /* MovieWithDetails.swift in Sources */,
 				7F82B1EE222DA39D009567E0 /* NotificationConstants.swift in Sources */,

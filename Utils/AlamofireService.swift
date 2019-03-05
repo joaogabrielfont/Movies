@@ -37,7 +37,10 @@ class AlamofireService {
     }
     
     static func getMovieWithDetails(movieId: Int, completion: @escaping(MovieWithDetails?) -> ()) {
-        let movieWithDetailsURL = "\(moviesURL)\(movieId)"
+        var movieStringId: String = ""
+        movieStringId += "/"
+        movieStringId += movieId.description
+        let movieWithDetailsURL = "\(moviesURL)\(movieStringId)"
         Alamofire.request(movieWithDetailsURL).responseJSON { (response) in
             guard let responseData = response.data else {
                 completion(nil)

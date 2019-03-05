@@ -73,5 +73,16 @@ extension MoviesViewController: UITableViewDataSource {
 }
 
 extension MoviesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard.init(name: "Main", bundle: nil)
+        if let vc = sb.instantiateViewController(withIdentifier: "MovieWithDetailsViewController") as? MovieWithDetailsViewController{
+            vc.title = self.movies[indexPath.row].title
+            vc.year = self.movies[indexPath.row].releaseDate
+            vc.moviePoster = self.movies[indexPath.row].image
+            vc.genres = self.movies[indexPath.row].genres
+            vc.id = self.movies[indexPath.row].id
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
 }

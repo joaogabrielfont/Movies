@@ -10,7 +10,6 @@ import UIKit
 
 class MoviesTableViewCell: UITableViewCell {
     
-    var genders: String = ""
 
     @IBOutlet weak var moviesPoster: UIImageView!
     @IBOutlet weak var titleLabel: UILabel! {
@@ -39,12 +38,18 @@ class MoviesTableViewCell: UITableViewCell {
     }
     
     func setUpCell(movie: Movie) {
+        var genders: String = ""
         self.titleLabel.text = movie.title
         self.launchYearLabel.text = movie.releaseDate
         for gender in movie.genres {
-           self.genders += gender
+            //Tratamento para não inserir gêneros repetidos
+            if (!genders.contains(gender)) {
+                genders += gender
+                genders += ", "
+            }
         }
-        self.genresLabel.text = self.genders
+        genders = String(genders.dropLast(2))
+        self.genresLabel.text = genders
         if let image = movie.image {
             self.moviesPoster.image = image
         } else {
