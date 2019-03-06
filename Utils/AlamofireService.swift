@@ -41,7 +41,13 @@ class AlamofireService {
         movieStringId += "/"
         movieStringId += movieId.description
         let movieWithDetailsURL = "\(moviesURL)\(movieStringId)"
-        Alamofire.request(movieWithDetailsURL).responseJSON { (response) in
+        var request = URLRequest(url: URL(string: movieWithDetailsURL)!)
+        if ReachabiltyService.shared.isConnected() {
+            request.cachePolicy = .returnCacheDataElseLoad
+        } else {
+            request.cachePolicy = .returnCacheDataDontLoad
+        }
+        Alamofire.request(request).responseJSON { (response) in
             guard let responseData = response.data else {
                 completion(nil)
                 return

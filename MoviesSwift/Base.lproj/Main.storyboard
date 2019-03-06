@@ -25,11 +25,50 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jkS-3q-zRr">
                                 <rect key="frame" x="177.5" y="355.5" width="20" height="20"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8E-tC-fl3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_internet" translatesAutoresizingMaskIntoConstraints="NO" id="2WE-HJ-x7a">
+                                        <rect key="frame" x="47" y="183.5" width="281" height="236"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvV-OE-muW">
+                                        <rect key="frame" x="16" y="126" width="343" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No internet available" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mu7-Gb-hzg">
+                                        <rect key="frame" x="16" y="451.5" width="343" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="2WE-HJ-x7a" firstAttribute="top" secondItem="fvV-OE-muW" secondAttribute="bottom" constant="32" id="5Ad-Re-lCg"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2WE-HJ-x7a" secondAttribute="trailing" constant="8" id="8We-WE-fJ2"/>
+                                    <constraint firstItem="fvV-OE-muW" firstAttribute="centerX" secondItem="i8E-tC-fl3" secondAttribute="centerX" id="Aof-76-xLC"/>
+                                    <constraint firstAttribute="trailing" secondItem="fvV-OE-muW" secondAttribute="trailing" constant="16" id="Iri-pB-W4n"/>
+                                    <constraint firstItem="2WE-HJ-x7a" firstAttribute="centerY" secondItem="i8E-tC-fl3" secondAttribute="centerY" id="KbR-bm-E2m"/>
+                                    <constraint firstItem="Mu7-Gb-hzg" firstAttribute="centerX" secondItem="i8E-tC-fl3" secondAttribute="centerX" id="RR9-PH-fQ9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mu7-Gb-hzg" secondAttribute="trailing" constant="16" id="Wy5-iV-KxZ"/>
+                                    <constraint firstItem="fvV-OE-muW" firstAttribute="leading" secondItem="i8E-tC-fl3" secondAttribute="leading" constant="16" id="cl3-Vg-8aw"/>
+                                    <constraint firstItem="2WE-HJ-x7a" firstAttribute="centerX" secondItem="i8E-tC-fl3" secondAttribute="centerX" id="dbV-2f-BSC"/>
+                                    <constraint firstItem="Mu7-Gb-hzg" firstAttribute="top" secondItem="2WE-HJ-x7a" secondAttribute="bottom" constant="32" id="fRB-HR-QTE"/>
+                                    <constraint firstItem="Mu7-Gb-hzg" firstAttribute="leading" secondItem="i8E-tC-fl3" secondAttribute="leading" constant="16" id="l4i-vk-Ctu"/>
+                                    <constraint firstItem="2WE-HJ-x7a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i8E-tC-fl3" secondAttribute="leading" constant="8" id="zHo-HB-Jx9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="i8E-tC-fl3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FBw-9H-weT"/>
                             <constraint firstItem="jkS-3q-zRr" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="FWX-ls-anj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uNK-Ig-l1o" secondAttribute="bottom" id="IGC-zo-es2"/>
+                            <constraint firstItem="i8E-tC-fl3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="MTm-5t-vja"/>
+                            <constraint firstItem="i8E-tC-fl3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OS6-yA-F4b"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="i8E-tC-fl3" secondAttribute="bottom" id="aTi-QN-N7C"/>
                             <constraint firstItem="uNK-Ig-l1o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="efk-7k-Gwn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uNK-Ig-l1o" secondAttribute="trailing" id="fIK-s6-HKD"/>
                             <constraint firstItem="uNK-Ig-l1o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jdk-pl-oLd"/>
@@ -39,6 +78,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mUS-3g-hlJ"/>
                     <connections>
+                        <outlet property="emptyStateView" destination="i8E-tC-fl3" id="4wY-ub-x2y"/>
                         <outlet property="mainActivityIndicator" destination="jkS-3q-zRr" id="zF5-ZP-LVW"/>
                         <outlet property="moviesTableView" destination="uNK-Ig-l1o" id="teO-AE-Ivg"/>
                     </connections>
@@ -193,4 +233,7 @@
             <point key="canvasLocation" x="133.59999999999999" y="-564.46776611694156"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="no_internet" width="281" height="236"/>
+    </resources>
 </document>

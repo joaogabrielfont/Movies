@@ -12,11 +12,7 @@ class MovieWithDetailsViewController: UIViewController {
     
     var movie: MovieWithDetails? = nil
 
-    @IBOutlet weak var moviePosterView: UIImageView! {
-        didSet {
-            self.moviePosterView.image = self.moviePoster
-        }
-    }
+    @IBOutlet weak var moviePosterView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
@@ -28,22 +24,12 @@ class MovieWithDetailsViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel! {
         didSet {
             self.yearLabel.font = UIFont.preferredFont(forTextStyle: .callout)
-            self.yearLabel.text = "Data de lançamento: " + self.year
         }
     }
     
     @IBOutlet weak var genresLabel: UILabel! {
         didSet {
             self.genresLabel.font = UIFont.preferredFont(forTextStyle: .callout)
-            var genres: String = ""
-            for genre in self.genres {
-                if !genres.contains(genre) {
-                    genres += genre
-                    genres += ", "
-                }
-            }
-            genres = String(genres.dropLast(2))
-            self.genresLabel.text = "Gêneros: " + genres
         }
     }
     
@@ -76,13 +62,35 @@ class MovieWithDetailsViewController: UIViewController {
     var moviePoster: UIImage? = nil
     var genres: [String] = []
     var year: String = ""
+    lazy var currencyFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+
+    func getDetails() {
+        AlamofireService.getMovieWithDetails(movieId: self.id) { (movieWithDetails) in
+            guard let movieDetails = movieWithDetails else {
+                self.overviewLabel.text = "nao conectado"
+                return
+            }
+            self.overviewLabel.text = movieDetails.overview
+            self.revenueLabel.text = "Receita: \(self.currencyFormatter.string(from: NSNumber(value: movieDetails.revenue)) ?? "")"
+            self.runtimeLabel.text = "Duração: \(movieDetails.runtime.description)"
+            self.languagesLabel.text = "Linguagens: " + movieDetails.spokenLanguages.joined(separator: ", ")
+        }
+    }
+
+    @objc func internetConnected() {
+       getDetails()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AlamofireService.getMovieWithDetails(movieId: self.id) { (movieWithDetails) in
-            self.overviewLabel.text = movieWithDetails?.overview
-            self.revenueLabel.text = movieWithDetails?.revenue.description
-            self.runtimeLabel.text = movieWithDetails?.runtime.description
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnected), name: .InternetConnected, object: nil)
+        self.moviePosterView.image = self.moviePoster
+        self.yearLabel.text = "Data de lançamento: " + self.year
+        self.genresLabel.text = "Gêneros: " + self.genres.joined(separator: ", ")
+        self.getDetails()
     }
 }

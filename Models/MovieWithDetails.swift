@@ -10,7 +10,7 @@ import UIKit
 class MovieWithDetails {
     let budget: Int64
     let genres: [String]
-    //let homepage: String
+    let homepage: String?
     let id: Int
     let originalLanguage: String
     let originalTitle: String
@@ -18,7 +18,7 @@ class MovieWithDetails {
     let releaseDate: String
     let revenue: Int64
     let runtime: Int
-    let spokenLanguages: [[String : Any]]
+    let spokenLanguages: [String]
     let tagline: String
     let title: String
     let voteAverage: Double
@@ -26,7 +26,7 @@ class MovieWithDetails {
     struct movieWithDetailsKeys {
         static let budget = "budget"
         static let genres = "genres"
-        //static let homepage = "homepage"
+        static let homepage = "homepage"
         static let id = "id"
         static let originalLanguage = "original_language"
         static let originalTitle = "original_title"
@@ -47,10 +47,9 @@ class MovieWithDetails {
             let originalTitle = movieWithDetailsDictionary[movieWithDetailsKeys.originalTitle] as? String,
             let overview = movieWithDetailsDictionary[movieWithDetailsKeys.overview] as? String,
             let releaseDate = movieWithDetailsDictionary[movieWithDetailsKeys.releaseDate] as? String,
-            //let homepage = movieWithDetailsDictionary[movieWithDetailsKeys.homepage] as? String,
             let revenue = movieWithDetailsDictionary[movieWithDetailsKeys.revenue] as? Int64,
             let runtime = movieWithDetailsDictionary[movieWithDetailsKeys.runtime] as? Int,
-            let spokenLanguages = movieWithDetailsDictionary[movieWithDetailsKeys.spokenLanguages] as? [[String : Any]],
+            let spokenLanguagesDict = movieWithDetailsDictionary[movieWithDetailsKeys.spokenLanguages] as? [[String : Any]],
             let tagline = movieWithDetailsDictionary[movieWithDetailsKeys.tagline] as? String,
             let voteAverage = movieWithDetailsDictionary[movieWithDetailsKeys.voteAverage] as? Double,
             let budget = movieWithDetailsDictionary[movieWithDetailsKeys.budget] as? Int64,
@@ -66,11 +65,13 @@ class MovieWithDetails {
         self.releaseDate = releaseDate
         self.revenue = revenue
         self.runtime = runtime
-        self.spokenLanguages = spokenLanguages
+        self.spokenLanguages = spokenLanguagesDict.compactMap { (spokenDict) -> String? in
+            return spokenDict["name"] as? String
+        }
         self.tagline = tagline
         self.title = title
         self.voteAverage = voteAverage
-        //self.homepage = homepage
+        self.homepage = movieWithDetailsDictionary[movieWithDetailsKeys.homepage] as? String
     }
 }
 

@@ -6,5 +6,6 @@ target 'MoviesSwift' do
   use_frameworks!
 
   pod 'Alamofire'
+  pod 'ReachabilitySwift'
 
 end

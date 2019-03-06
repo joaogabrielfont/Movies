@@ -22,6 +22,7 @@
 		7F82B1F4222DC121009567E0 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F82B1F2222DC121009567E0 /* MoviesViewController.swift */; };
 		7FE960D8222EE8700017CA98 /* MovieWithDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE960D7222EE8700017CA98 /* MovieWithDetailsViewController.swift */; };
 		827226A41AAD58129C687400 /* Pods_MoviesSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 370885CCA0219382E9A2150D /* Pods_MoviesSwift.framework */; };
+		88162FAA22302F010094EE90 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88162FA922302F010094EE90 /* ReachabilityService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		7F82B1EF222DA579009567E0 /* MovieWithDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieWithDetails.swift; sourceTree = "<group>"; };
 		7F82B1F2222DC121009567E0 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		7FE960D7222EE8700017CA98 /* MovieWithDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieWithDetailsViewController.swift; sourceTree = "<group>"; };
+		88162FA922302F010094EE90 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		C94AE075984AD44F664E00F4 /* Pods-MoviesSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoviesSwift/Pods-MoviesSwift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 			children = (
 				7F82B1EA222D91FA009567E0 /* AlamofireService.swift */,
 				7F82B1ED222DA39D009567E0 /* NotificationConstants.swift */,
+				88162FA922302F010094EE90 /* ReachabilityService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -159,7 +162,6 @@
 				7F82B1C5222D72A2009567E0 /* Frameworks */,
 				7F82B1C6222D72A2009567E0 /* Resources */,
 				7A551F8FFE078E4FA72E7E4B /* [CP] Embed Pods Frameworks */,
-				FE64A613982AC63B6986A2EE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,18 +228,20 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MoviesSwift/Pods-MoviesSwift-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MoviesSwift/Pods-MoviesSwift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoviesSwift/Pods-MoviesSwift-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoviesSwift/Pods-MoviesSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F1522BCFF59859A2C2788607 /* [CP] Check Pods Manifest.lock */ = {
@@ -262,25 +266,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FE64A613982AC63B6986A2EE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoviesSwift/Pods-MoviesSwift-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -297,6 +282,7 @@
 				7F82B1E2222D844C009567E0 /* Movie.swift in Sources */,
 				7F82B1EB222D91FA009567E0 /* AlamofireService.swift in Sources */,
 				7F82B1D4222D72A3009567E0 /* MoviesSwift.xcdatamodeld in Sources */,
+				88162FAA22302F010094EE90 /* ReachabilityService.swift in Sources */,
 				7F82B1F4222DC121009567E0 /* MoviesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

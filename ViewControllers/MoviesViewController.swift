@@ -25,7 +25,14 @@ class MoviesViewController: UIViewController {
             self.mainActivityIndicator.hidesWhenStopped = true
         }
     }
-    
+
+    @IBOutlet weak var emptyStateView: UIView! {
+        didSet {
+            self.emptyStateView.isHidden = true
+        }
+    }
+
+
     var movies: [Movie] = []
 
     override func viewDidLoad() {
@@ -33,14 +40,27 @@ class MoviesViewController: UIViewController {
         self.navigationItem.title = "Melhores filmes do TMDB"
         NotificationCenter.default.addObserver(self, selector: #selector(moviesDownloaded(notification:)), name:.MoviesDownloaded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moviePosterDownloaded(notification:)), name: .ImageDownloaded, object: nil)
-        self.mainActivityIndicator.startAnimating()
-        AlamofireService.getMovies { (moviesArray) in
-            self.movies = moviesArray
-            NotificationCenter.default.post(Notification(name: .MoviesDownloaded))
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnected), name: .InternetConnected, object: nil)
+        self.getMovies()
     }
     
     // MARK: - Methods
+    func getMovies() {
+        print("remove empty state")
+        self.emptyStateView.isHidden = true
+        self.mainActivityIndicator.startAnimating()
+        AlamofireService.getMovies { (moviesArray) in
+            self.mainActivityIndicator.stopAnimating()
+            self.movies = moviesArray
+            if moviesArray.isEmpty {
+                print("empty state")
+                self.emptyStateView.isHidden = false
+            } else {
+                NotificationCenter.default.post(Notification(name: .MoviesDownloaded))
+            }
+        }
+    }
+
     @objc func moviePosterDownloaded(notification: Notification) {
         guard let userInfo = notification.userInfo, let movieId = userInfo[NotificationKeys.movieId] as? Int else {
             return
@@ -52,8 +72,13 @@ class MoviesViewController: UIViewController {
     
     @objc func moviesDownloaded(notification: Notification) {
         self.moviesTableView.isHidden = false
-        self.mainActivityIndicator.stopAnimating()
         self.moviesTableView.reloadData()
+    }
+
+    @objc func internetConnected() {
+        if self.movies.isEmpty {
+            self.getMovies()
+        }
     }
 }
 

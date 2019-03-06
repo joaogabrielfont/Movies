@@ -10,6 +10,8 @@ import Foundation
 extension Notification.Name {
     static let ImageDownloaded = Notification.Name("ImageDownloaded")
     static let MoviesDownloaded = Notification.Name("MoviesDownloaded")
+    static let InternetConnected = Notification.Name("InternetConnected")
+    static let InternetDisconnected = Notification.Name("InternetDisconnected")
 }
 
 struct NotificationKeys {
