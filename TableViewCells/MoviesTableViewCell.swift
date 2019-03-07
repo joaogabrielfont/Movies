@@ -40,7 +40,7 @@ class MoviesTableViewCell: UITableViewCell {
     func setUpCell(movie: Movie) {
         var genders: String = ""
         self.titleLabel.text = movie.title
-        self.launchYearLabel.text = movie.releaseDate
+        self.launchYearLabel.text = "Launch Year: \(movie.releaseDate.prefix(4))"
         for gender in movie.genres {
             //Tratamento para não inserir gêneros repetidos
             if (!genders.contains(gender)) {

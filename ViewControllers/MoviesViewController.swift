@@ -37,7 +37,7 @@ class MoviesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Melhores filmes do TMDB"
+        self.navigationItem.title = "Best TMDB Films"
         NotificationCenter.default.addObserver(self, selector: #selector(moviesDownloaded(notification:)), name:.MoviesDownloaded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moviePosterDownloaded(notification:)), name: .ImageDownloaded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(internetConnected), name: .InternetConnected, object: nil)
