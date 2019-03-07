@@ -95,12 +95,7 @@ class MovieWithDetailsViewController: UIViewController {
         return formatter
     }()
     
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        return formatter
-    }()
-
+    //MARK: - Methods
     func getDetails() {
         self.moviesWithDetailsActivityIndicator.startAnimating()
         self.noInternetView.isHidden = true
@@ -122,11 +117,13 @@ class MovieWithDetailsViewController: UIViewController {
             self.loadingView.isHidden = true
         }
     }
-
+    
+    //MARK: - Listeners
     @objc func internetConnected() {
        getDetails()
     }
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.moviePosterView.image = self.moviePoster
@@ -134,9 +131,5 @@ class MovieWithDetailsViewController: UIViewController {
         self.genresLabel.text = "Gêneros: " + self.genres.joined(separator: ", ")
         NotificationCenter.default.addObserver(self, selector: #selector(internetConnected), name: .InternetConnected, object: nil)
         self.getDetails()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: .InternetConnected, object: nil)
     }
 }

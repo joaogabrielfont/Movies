@@ -36,6 +36,7 @@ class AlamofireService {
         }
     }
     
+    //MARK: - Functions
     static func getMovieWithDetails(movieId: Int, completion: @escaping(MovieWithDetails?) -> ()) {
         var movieStringId: String = ""
         movieStringId += "/"
@@ -67,7 +68,6 @@ class AlamofireService {
             }
         }
     }
-    
     
     static func getImage(stringURL: String, completion: @escaping (UIImage?) -> ()) {
         Alamofire.request(stringURL).responseData { (response) in

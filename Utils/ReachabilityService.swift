@@ -10,6 +10,7 @@ import Foundation
 import Reachability
 
 final class ReachabilityService {
+    
     private static let reachability = Reachability()!
 
     static func start() {

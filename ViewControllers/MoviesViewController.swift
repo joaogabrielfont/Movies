@@ -10,6 +10,7 @@ import UIKit
 
 class MoviesViewController: UIViewController {
     
+    //MARK: - IBOutlets
     @IBOutlet weak var moviesTableView: UITableView! {
         didSet {
             self.moviesTableView.isHidden = true
@@ -32,9 +33,10 @@ class MoviesViewController: UIViewController {
         }
     }
     
+    //MARK: - Variables
     var movies: [Movie] = []
 
-    // MARK: - LifeCycle
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Best TMDB Films"
@@ -44,29 +46,22 @@ class MoviesViewController: UIViewController {
         self.getMovies()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: .MoviesDownloaded, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .ImageDownloaded, object: nil)
-        NotificationCenter.default.removeObserver(self, name:.InternetConnected, object: nil)
-    }
-    
-    // MARK: - Methods
+    //MARK: - Methods
     func getMovies() {
-        print("remove empty state")
         self.emptyStateView.isHidden = true
         self.mainActivityIndicator.startAnimating()
         AlamofireService.getMovies { (moviesArray) in
             self.mainActivityIndicator.stopAnimating()
             self.movies = moviesArray
             if moviesArray.isEmpty {
-                print("empty state")
                 self.emptyStateView.isHidden = false
             } else {
                 NotificationCenter.default.post(Notification(name: .MoviesDownloaded))
             }
         }
     }
-
+    
+    //MARK: - Listeners
     @objc func moviePosterDownloaded(notification: Notification) {
         guard let userInfo = notification.userInfo, let movieId = userInfo[NotificationKeys.movieId] as? Int else {
             return
@@ -103,6 +98,7 @@ extension MoviesViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - TableView Delegate
 extension MoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
@@ -115,5 +111,4 @@ extension MoviesViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
 }

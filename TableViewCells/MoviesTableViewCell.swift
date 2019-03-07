@@ -10,7 +10,7 @@ import UIKit
 
 class MoviesTableViewCell: UITableViewCell {
     
-
+    //MARK: - IBOutlets
     @IBOutlet weak var moviesPoster: UIImageView!
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
@@ -37,6 +37,7 @@ class MoviesTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: - Methods
     func setUpCell(movie: Movie) {
         var genders: String = ""
         self.titleLabel.text = movie.title
@@ -58,7 +59,7 @@ class MoviesTableViewCell: UITableViewCell {
         self.imageActivityIndicator.stopAnimating()
     }
     
-    
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
@@ -67,7 +68,6 @@ class MoviesTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
