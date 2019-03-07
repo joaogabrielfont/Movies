@@ -9,13 +9,10 @@
 import Foundation
 import Reachability
 
-final class ReachabiltyService {
-    private let reachability: Reachability
+final class ReachabilityService {
+    private static let reachability = Reachability()!
 
-    static let shared = ReachabiltyService()
-
-    private init() {
-        self.reachability = Reachability()!
+    static func start() {
 
         self.reachability.whenReachable = { _ in
             print("Internet connected")
@@ -34,8 +31,8 @@ final class ReachabiltyService {
         }
     }
 
-    func isConnected() -> Bool {
-        switch reachability.connection {
+    static func isConnected() -> Bool {
+        switch ReachabilityService.reachability.connection {
         case .none:
             return false
         case .wifi, .cellular:

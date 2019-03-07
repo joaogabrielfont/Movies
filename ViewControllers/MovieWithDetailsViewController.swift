@@ -80,6 +80,7 @@ class MovieWithDetailsViewController: UIViewController {
             self.noInternetView.isHidden = true
         }
     }
+    @IBOutlet weak var moviesDetailScrollView: UIScrollView!
     
     //MARK: - Variables
     var movie: MovieWithDetails? = nil
@@ -103,9 +104,11 @@ class MovieWithDetailsViewController: UIViewController {
     func getDetails() {
         self.moviesWithDetailsActivityIndicator.startAnimating()
         self.noInternetView.isHidden = true
+        self.moviesDetailScrollView.isScrollEnabled = true
         AlamofireService.getMovieWithDetails(movieId: self.id) { (movieWithDetails) in
             guard let movieDetails = movieWithDetails else {
                 self.noInternetView.isHidden = false
+                self.moviesDetailScrollView.isScrollEnabled = false
                 return
             }
             self.titleLabel.text = self.title
@@ -126,10 +129,14 @@ class MovieWithDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(internetConnected), name: .InternetConnected, object: nil)
         self.moviePosterView.image = self.moviePoster
         self.yearLabel.text = "Launch Year: \(self.year.prefix(4))"
         self.genresLabel.text = "Gêneros: " + self.genres.joined(separator: ", ")
+        NotificationCenter.default.addObserver(self, selector: #selector(internetConnected), name: .InternetConnected, object: nil)
         self.getDetails()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: .InternetConnected, object: nil)
     }
 }

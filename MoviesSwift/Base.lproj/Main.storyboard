@@ -264,6 +264,7 @@
                         <outlet property="languagesLabel" destination="4YG-zV-FOK" id="l3Y-W8-kaW"/>
                         <outlet property="loadingView" destination="UDO-HJ-n0h" id="P5S-F3-JgL"/>
                         <outlet property="moviePosterView" destination="qAC-Dm-b6M" id="KaH-fE-B5f"/>
+                        <outlet property="moviesDetailScrollView" destination="5l5-lx-O07" id="3UY-Ct-RgM"/>
                         <outlet property="moviesWithDetailsActivityIndicator" destination="MpL-mL-MHs" id="Ye6-Ej-9Ot"/>
                         <outlet property="noInternetView" destination="frf-le-Upo" id="QKJ-Ub-40P"/>
                         <outlet property="originalLanguageLabel" destination="gyT-e6-UU7" id="GjB-O7-rPC"/>

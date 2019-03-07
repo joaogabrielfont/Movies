@@ -31,10 +31,10 @@ class MoviesViewController: UIViewController {
             self.emptyStateView.isHidden = true
         }
     }
-
-
+    
     var movies: [Movie] = []
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Best TMDB Films"
@@ -42,6 +42,12 @@ class MoviesViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(moviePosterDownloaded(notification:)), name: .ImageDownloaded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(internetConnected), name: .InternetConnected, object: nil)
         self.getMovies()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: .MoviesDownloaded, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .ImageDownloaded, object: nil)
+        NotificationCenter.default.removeObserver(self, name:.InternetConnected, object: nil)
     }
     
     // MARK: - Methods

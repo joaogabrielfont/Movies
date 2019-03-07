@@ -42,7 +42,7 @@ class AlamofireService {
         movieStringId += movieId.description
         let movieWithDetailsURL = "\(moviesURL)\(movieStringId)"
         var request = URLRequest(url: URL(string: movieWithDetailsURL)!)
-        if ReachabiltyService.shared.isConnected() {
+        if ReachabilityService.isConnected() {
             request.cachePolicy = .returnCacheDataElseLoad
         } else {
             request.cachePolicy = .returnCacheDataDontLoad
